@@ -1,0 +1,7 @@
+.logo {
+    display: block; /* Ensures the image is treated as a block element */
+    margin: 0 auto; /* Centers the image horizontally */
+    width: 100%; /* Makes the image take up the full width */
+    height: 400px; /* Maintains the aspect ratio */
+  }
+  
