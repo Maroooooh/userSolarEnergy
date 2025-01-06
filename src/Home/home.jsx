@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../axiosConfig/instance";
 
-import Slider from "react-slick";
+//import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Container, Card, Nav } from "react-bootstrap";
@@ -45,36 +45,36 @@ const Home = () => {
     fetchCategoriesAndProducts();
   }, []);
 
-  const sliderSettings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  // const sliderSettings = {
+  //   dots: true,
+  //   infinite: false,
+  //   speed: 500,
+  //   slidesToShow: 4,
+  //   slidesToScroll: 4,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 3,
+  //         slidesToScroll: 3,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 600,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 2,
+  //       },
+  //     },
+  //     {
+  //       breakpoint: 480,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1,
+  //       },
+  //     },
+  //   ],
+  // };
 
   if (loading) {
     return <div className="text-center mt-5">Loading...</div>;
@@ -109,7 +109,7 @@ const Home = () => {
       {/* Products Slider */}
       {activeCategory === "all" && allProducts.length > 0 ? (
         <div className="slider-container">
-          <Slider {...sliderSettings}>
+          
             {allProducts.map((product) => (
               <div
                 key={product._id}
@@ -146,11 +146,11 @@ const Home = () => {
                 </Card>
               </div>
             ))}
-          </Slider>
+         
         </div>
       ) : activeCategory && productsByCategory[activeCategory]?.length > 0 ? (
         <div className="slider-container">
-          <Slider {...sliderSettings}>
+        
             {productsByCategory[activeCategory].map((product) => (
               <div
                 key={product._id}
@@ -187,7 +187,7 @@ const Home = () => {
                 </Card>
               </div>
             ))}
-          </Slider>
+          
         </div>
       ) : (
         <div className="text-center text-muted">No products available</div>
