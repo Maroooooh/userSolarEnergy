@@ -3,3 +3,19 @@
  font-family: "Harmattan"
  
 }
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+  }
+  
