@@ -1,31 +1,44 @@
-import { BrowserRouter, Routes , Route } from "react-router-dom";
-import "./App.css";
-import Footer from "./footer";
-import Home from "./Home/home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./Navbar";
-import Services from "./Services/Services";
-import Callus from "./Callus/callus";
-import Notfound from "./Notfound/notfound";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Footer from './footer';
+import Home from "./Home/home";
+import ProductDetails from "./details/details";
+import CategoryProducts from "./CategoryProducts";
+const App = () => {
+  const [activeCategory, setActiveCategory] = useState("all");
 
-function App() {
   return (
-    <div className="container">
-      <BrowserRouter>
-        <Navbar></Navbar>
+    <Router>
+      <div className="d-flex flex-column min-vh-100">
+        {/* Navbar */}
+        <Navbar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+
+        {/* Main Content */}
+        <div className="flex-grow-1">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/callus" element={<Callus />} />
-          <Route path = "*" element={<Notfound/>}/> 
-        </Routes>
-       
-        <Footer></Footer>
-      </BrowserRouter>
-    </div>
+        {/* Home Route */}
+        <Route
+          path="/"
+          element={<Home activeCategory={activeCategory} />}
+        />
+
+        {/* Category-Specific Products */}
+        <Route
+          path="/category/:categoryId"
+          element={<CategoryProducts setActiveCategory={setActiveCategory} />}
+        />
+
+        {/* Product Details */}
+        <Route path="/product/:id" element={<ProductDetails />} />
+      </Routes>
+        </div>
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

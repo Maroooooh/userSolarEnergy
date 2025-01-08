@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../axiosConfig/instance";
+import { useParams } from "react-router-dom";
+import axiosInstance from "./axiosConfig/instance";
 import { Container, Card } from "react-bootstrap";
 
-const Home = ({ activeCategory, setActiveCategory }) => {
+const CategoryProducts = ({ setActiveCategory }) => {
+  const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,35 +12,35 @@ const Home = ({ activeCategory, setActiveCategory }) => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        if (activeCategory === "all") {
-          // Fetch all products when activeCategory is "all"
-          const res = await axiosInstance.get("products/products");
-          setProducts(res.data.data || []);
-        } else {
-          // Fetch products for the selected category
-          const res = await axiosInstance.get(
-            `products/products/${activeCategory}`
-          );
-          setProducts(res.data.data || []);
-        }
+        setActiveCategory(categoryId);
+        const res = await axiosInstance.get(
+          categoryId === "all"
+            ? "products/products"
+            : `products/products/${categoryId}`
+        );
+        setProducts(res.data.data || []);
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error fetching category products:", error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchProducts();
-  }, [activeCategory]); // Refetch whenever activeCategory changes
+  }, [categoryId, setActiveCategory]);
 
   if (loading) {
     return <div className="text-center mt-5">Loading...</div>;
   }
 
   return (
+    
     <Container className="my-4">
-      <br/>  <br/><br/><br/>
-      
+       <br/>
+    <br/>
+    <br/>
+    <br/>
+    
       <div className="products-grid">
         {products.map((product) => (
           <div
@@ -71,9 +73,8 @@ const Home = ({ activeCategory, setActiveCategory }) => {
           </div>
         ))}
       </div>
-      
     </Container>
   );
 };
 
-export default Home;
+export default CategoryProducts;
