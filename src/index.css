@@ -169,11 +169,125 @@
 }
 
 @media (min-width: 769px) {
-  .navbar-toggler {
-    display: none; /* Hide the hamburger button on larger screens */
+  .navbar-container .navbar-collapse {
+    width: 250px; /* Set the width of the collapsible menu */
   }
+}
+@media (max-width: 768px) {
+  .navbar-container .navbar-collapse {
+    width: 250px; /* Set the width of the collapsible menu */
+  }
+}
 
-  .navbar-nav {
-    display: flex;
+
+/* Style for the Navbar items */
+.nav-link {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover Effect - Light Blue background with Orange text */
+.nav-link:hover {
+  
+  color: #ff5722 !important;   /* Orange text */
+}
+
+/* Active State - Coral background with White text */
+.nav-link.active {
+  background-color: #ff7f50;  /* Coral */
+  color: white !important;     /* White text */
+}
+
+
+/* WhatsApp Icon position */
+.whatsapp-icon {
+  position: fixed;
+  bottom: 20px;  /* Adjust distance from the bottom */
+  right: 20px;   /* Adjust distance from the right */
+  background-color: #25D366; /* WhatsApp green */
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  z-index: 1000;  /* Make sure it's on top of other content */
+}
+
+/* Optional: Hover effect to enlarge the icon */
+.whatsapp-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Ensure the icon inside is not too small */
+.whatsapp-icon svg {
+  width: 50px;
+  height: 50px;
+}
+
+
+/* Grid layout for products */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+  gap: 20px; /* Spacing between products */
+}
+
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Tablet screen (3 columns) */
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet */
   }
+}
+
+/* Phone screen (2 columns) */
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on phone */
+  }
+}
+
+/* Style the product cards */
+.card {
+  border: none; /* Remove default card border */
+  border-radius: 12px; /* Rounded corners */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+.card-img-top {
+  border-radius: 8px; /* Make the image corners rounded */
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2ecc71; /* Green color for price */
 }

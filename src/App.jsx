@@ -5,6 +5,7 @@ import Footer from './footer';
 import Home from "./Home/home";
 import ProductDetails from "./details/details";
 import CategoryProducts from "./CategoryProducts";
+import { FaWhatsapp } from "react-icons/fa"; 
 const App = () => {
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -33,7 +34,14 @@ const App = () => {
         <Route path="/product/:id" element={<ProductDetails />} />
       </Routes>
         </div>
-
+        <a
+        href="https://wa.me/966560269161"  // Replace with your phone number
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-icon"
+      >
+        <FaWhatsapp size={50} color="white" />
+      </a>
         {/* Footer */}
         <Footer />
       </div>

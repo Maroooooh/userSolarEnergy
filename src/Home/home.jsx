@@ -37,8 +37,11 @@ const Home = ({ activeCategory, setActiveCategory }) => {
 
   return (
     <Container className="my-4">
-      <br/>  <br/><br/><br/>
-      
+      <br />
+      <br />
+      <br />
+      <br />
+
       <div className="products-grid">
         {products.map((product) => (
           <div
@@ -71,7 +74,6 @@ const Home = ({ activeCategory, setActiveCategory }) => {
           </div>
         ))}
       </div>
-      
     </Container>
   );
 };

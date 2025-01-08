@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Nav, Navbar, NavDropdown, Button, Collapse } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "./axiosConfig/instance";
 
@@ -30,6 +30,7 @@ const NavbarComponent = ({ activeCategory, setActiveCategory }) => {
     } else {
       navigate(`/category/${categoryId}`); // Navigate to category-specific products
     }
+    setOpen(false); // Close the collapsible menu after category click
   };
 
   return (
@@ -52,29 +53,18 @@ const NavbarComponent = ({ activeCategory, setActiveCategory }) => {
       {/* Toggle Button for Mobile View */}
       <Navbar.Toggle
         aria-controls="basic-navbar-nav"
-        onClick={() => setOpen(!open)}
+        onClick={() => setOpen(!open)} // Toggle collapse on click
       />
-      <Navbar.Collapse id="basic-navbar-nav">
-        {/* Categories */}
+      
+      {/* Collapsible Navbar */}
+      <Navbar.Collapse id="basic-navbar-nav" in={open}>
+        {/* Categories with the Collapse behavior */}
         <Nav className="ml-auto">
-          {/* <Nav.Item>
-            <Nav.Link
-              className="nav-link"
-              onClick={() => handleCategoryClick("all")}
-            >
-              الكل
-            </Nav.Link>
-          </Nav.Item> */}
-          {/* Display Categories */}
           {categories.map((category) => (
             <Nav.Item key={category._id}>
               <Nav.Link
-                className="nav-link"
+                className={`nav-link ${activeCategory === category._id ? 'active' : ''}`}
                 onClick={() => handleCategoryClick(category._id)}
-                style={{
-                  color: activeCategory === category._id ? "orange" : "black",
-                  cursor: "pointer",
-                }}
               >
                 {category.name}
               </Nav.Link>
