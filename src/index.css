@@ -135,3 +135,45 @@
     text-align: center;
   }
 }
+
+/* Make navbar toggle button visible only on smaller screens */
+.navbar-toggler {
+  display: block;
+  border: none;
+  background-color: transparent;
+}
+
+/* Hide the navbar links on smaller screens */
+.navbar-collapse {
+  display: none;
+}
+
+.navbar-collapse.show {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  /* Navbar items will stack vertically on mobile */
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  .navbar-toggler {
+    display: none; /* Hide the hamburger button on larger screens */
+  }
+
+  .navbar-nav {
+    display: flex;
+  }
+}
