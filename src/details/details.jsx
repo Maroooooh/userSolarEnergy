@@ -35,7 +35,7 @@ const ProductDetails = () => {
 
   return (
     <Container className="product-details-container">
-        <br/> <br/> <br/> <br/>
+      <br /> <br /> <br /> <br />
       {/* Product Title */}
       <h1 className="product-title">{product.name}</h1>
 
