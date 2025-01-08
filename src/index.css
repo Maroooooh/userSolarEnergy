@@ -67,74 +67,118 @@
 }
 
 
-/* Footer Styles */
+/* General footer styles */
 .footer {
-  background-color: #333;
-  color: white;
-  padding: 40px 0;
-}
-
-.footer-section {
-  margin-bottom: 20px;
+  background-color: #f8f9fa; /* Light gray background */
+  padding: 40px 20px;
+  text-align: center;
 }
 
 .footer h5 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  color: #f9f9f9;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
 }
 
 .footer p {
   font-size: 1rem;
-  color: #d1d1d1;
+  color: #555;
+  line-height: 1.6;
 }
 
 .footer ul {
-  list-style: none;
+  list-style-type: none;
   padding: 0;
 }
 
 .footer ul li {
-  font-size: 1rem;
-  color: #d1d1d1;
-  margin-bottom: 8px;
+  margin: 10px 0;
 }
 
 .footer ul li a {
-  color: #d1d1d1;
+  color: orange; /* Bootstrap primary color */
   text-decoration: none;
-  display: flex;
-  align-items: center;
+  font-size: 1rem;
 }
 
 .footer ul li a:hover {
+  color: orange; /* Darker blue for hover effect */
   text-decoration: underline;
 }
 
-.footer .contact-icons li {
+/* Contact icons styles */
+.contact-icons {
   display: flex;
-  align-items: center;
-  margin-bottom: 15px;
+  justify-content: center;
+  gap: 20px; /* Spacing between icons */
+  margin-top: 15px;
 }
 
-.footer .contact-icons li a {
-  display: flex;
-  align-items: center;
+.contact-icons a {
+  color: orange; /* Icon color */
+  transition: color 0.3s ease-in-out;
 }
 
-.footer .contact-icons li a svg {
-  margin-right: 10px;
+.contact-icons a:hover {
+  color: orange; /* Darker blue on hover */
 }
 
-.footer .contact-icons li a:hover {
-  color: #00d1b2;
-}
-
-@media (max-width: 768px) {
+/* Responsive styles for small devices */
+@media (max-width: 767px) {
   .footer-section {
-    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .footer h5 {
+    font-size: 1.3rem;
+  }
+
+  .footer p,
+  .footer ul li a {
+    font-size: 0.9rem;
+  }
+
+  .contact-icons {
+    gap: 15px;
+  }
+
+  .contact-icons a {
+    font-size: 24px; /* Slightly smaller icons for mobile */
   }
 }
+
+/* Responsive styles for medium devices (e.g., tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer h5 {
+    font-size: 1.4rem;
+  }
+
+  .footer p,
+  .footer ul li a {
+    font-size: 1rem;
+  }
+
+  .contact-icons a {
+    font-size: 28px;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 992px) {
+  .footer {
+    text-align: left; /* Align text to the left for larger screens */
+  }
+
+  .footer-section {
+    margin-bottom: 0; /* No extra spacing on large screens */
+  }
+
+  .contact-icons a {
+    font-size: 30px;
+  }
+}
+
 
 /* Make navbar toggle button visible only on smaller screens */
 .navbar-toggler {
